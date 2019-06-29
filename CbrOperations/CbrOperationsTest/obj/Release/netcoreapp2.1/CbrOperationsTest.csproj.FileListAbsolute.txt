@@ -1,0 +1,17 @@
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperationsTest.deps.json
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperationsTest.runtimeconfig.json
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperationsTest.runtimeconfig.dev.json
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperationsTest.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperationsTest.pdb
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperations.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Release\netcoreapp2.1\CbrOperations.pdb
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.csprojAssemblyReference.cache
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.csproj.CoreCompileInputs.cache
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.AssemblyInfoInputs.cache
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.AssemblyInfo.cs
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.csproj.CopyComplete
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\obj\Release\netcoreapp2.1\CbrOperationsTest.pdb

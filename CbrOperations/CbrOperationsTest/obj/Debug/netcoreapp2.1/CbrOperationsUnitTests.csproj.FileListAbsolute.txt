@@ -1,0 +1,3 @@
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperationsTest\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
