@@ -20,7 +20,6 @@ namespace CbrOperationsUnitTests
         {
             var container = new WindsorContainer();
 
-
             var directoryMock = new Mock<IDirectory>();
             var listFiles = new List<string>();
             for (var i = 0; i < 1; i++)
@@ -39,8 +38,7 @@ namespace CbrOperationsUnitTests
             List<string> list = new List<string>();
             list.Add("some_file.jpg");
 
-            archiveMock.Setup(lib => lib.WriteToFiles(It.IsAny<string>())).Returns(list);
-            archiveMock.Setup(lib => lib.FileName).Returns(listFiles[0]);
+            archiveMock.Setup(lib => lib.WriteToFiles(It.IsAny<string>(), It.IsAny<string>())).Returns(list);
 
             container.Register(Component.For<IArchiveFactoryDecoupling>().Instance(archiveMock.Object));
 

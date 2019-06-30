@@ -8,31 +8,29 @@ namespace CbrOperations.Decoupling.SharpCompress
 {
     public interface IArchiveFactoryDecoupling
     {
-        string FileName { get; }
         IArchive CurrentArchive { get; }
-        List<string> WriteToFiles(string extractedFolder);
+        List<string> WriteToFiles(string extractedFolder, string fileName);
     }
 
     public class ArchiveFactoryDecoupling : IArchiveFactoryDecoupling
     {
-        public string FileName { get; }
+        
         public IArchive CurrentArchive { get; private set; }
         public IList<IRarEntry> Entries { get; private set; }
 
 
 
-        public ArchiveFactoryDecoupling(string fileName)
+        public ArchiveFactoryDecoupling()
         {
-            FileName = fileName;
+            
         }
 
 
-
-        public List<string> WriteToFiles(string extractedFolder)
+        public List<string> WriteToFiles(string extractedFolder, string fileName)
         {
             var list = new List<string>();
 
-            CurrentArchive = ArchiveFactory.Open(FileName);
+            CurrentArchive = ArchiveFactory.Open(fileName);
             foreach (var item in CurrentArchive.Entries)
             {
                 string fullFile = System.IO.Path.Combine(extractedFolder, item.Key);
@@ -46,5 +44,4 @@ namespace CbrOperations.Decoupling.SharpCompress
 
 
     }
-
 }

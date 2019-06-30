@@ -17,37 +17,8 @@ namespace CbrOperationsIntegrationTests
     [TestClass]
     public class ExtractionIntegrationTests
     {
+
         [TestMethod]
-        public void ExtractOneFileTest()
-        {
-            var container = new WindsorContainer();
-
-            string fileName = @"D:\Temp\Weird War Tales 025.cbr";
-
-
-            container.Register(Component.For<IFile>().ImplementedBy<File>().DependsOn(Dependency.OnValue<string>(fileName)));
-            container.Register(Component.For<IOneCbrFile>().ImplementedBy<OneCbrFile>().DependsOn(Dependency.OnValue<string>(fileName)));
-
-
-            container.Register(Component.For<List<IRarEntry>>().ImplementedBy<List<IRarEntry>>());
-            container.Register(Component.For<IArchiveFactoryDecoupling>().ImplementedBy<ArchiveFactoryDecoupling>().DependsOn(Dependency.OnValue<string>(fileName)));
-            container.Register(Component.For<IExtractionRules>().ImplementedBy<ExtractionRules>());
-            container.Register(Component.For<ICbrExtract>().ImplementedBy<CbrExtract>());
-
-
-            var extractionRules = container.Resolve<IExtractionRules>();
-            var extract = container.Resolve<ICbrExtract>();
-            var oneFile = container.Resolve<IOneCbrFile>();
-
-            extract.Extract(oneFile);
-
-            Assert.IsTrue(extractionRules != null);
-            Assert.IsTrue(extractionRules is ExtractionRules);
-            Assert.IsTrue(extract != null);
-            Assert.IsTrue(extract is CbrExtract);
-        }
-
-                [TestMethod]
         public void ExtractPathsUnitTest()
         {
             var container = new WindsorContainer();
@@ -63,16 +34,22 @@ namespace CbrOperationsIntegrationTests
             var extractionRules = container.Resolve<IExtractionRules>();
             var extract = container.Resolve<ICbrExtract>();
             var paths = container.Resolve<CbrPaths>();
+            paths.SourcePath = @"D:\Temp\pending";
+            paths.DestinationPath = @"D:\Temp\working";
 
             var output = extract.Extract(paths);
+
+
 
             Assert.IsTrue(extractionRules != null);
             Assert.IsTrue(extractionRules is ExtractionRules);
             Assert.IsTrue(extract != null);
             Assert.IsTrue(extract is CbrExtract);
             Assert.IsTrue(output != null);
+            Assert.IsTrue(paths.SourcePath != null);
+            Assert.IsTrue(paths.DestinationPath != null);
             Assert.IsTrue(output is List<CbrExtractOutput>);
-            Assert.IsTrue(output.Count == 10);
+            Assert.IsTrue(output.Count == 1);
         }
     }
 }

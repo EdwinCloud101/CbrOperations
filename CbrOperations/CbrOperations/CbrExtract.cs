@@ -12,8 +12,6 @@ namespace CbrOperations
 {
     public interface ICbrExtract
     {
-        IOneCbrFile OneFile { get; }
-        CbrExtractOutput Extract(IOneCbrFile oneFile);
         List<CbrExtractOutput> Extract(CbrPaths paths);
         IArchiveFactoryDecoupling FactoryDecoupling { get; }
     }
@@ -26,7 +24,6 @@ namespace CbrOperations
 
 
         public IArchiveFactoryDecoupling FactoryDecoupling { get; }
-        public IOneCbrFile OneFile { get; }
 
 
 
@@ -35,16 +32,6 @@ namespace CbrOperations
             _extractionRules = extractionRules;
             _directory = directory;
             FactoryDecoupling = archiveFactoryDecoupling;
-        }
-
-
-
-        public CbrExtractOutput Extract(IOneCbrFile oneFile)
-        {
-            CbrExtractOutput output = new CbrExtractOutput();
-            output.HasFolder = _extractionRules.ForceSubFolder;
-            output.Files = FactoryDecoupling.WriteToFiles(System.IO.Path.GetDirectoryName(oneFile.FileName));
-            return output;
         }
 
 
@@ -58,31 +45,11 @@ namespace CbrOperations
             {
                 var output = new CbrExtractOutput();
                 output.HasFolder = _extractionRules.ForceSubFolder;
-                output.Files = FactoryDecoupling.WriteToFiles(System.IO.Path.GetDirectoryName(item));
+                output.Files = FactoryDecoupling.WriteToFiles(paths.DestinationPath, item);
                 outputList.Add(output);
             }
 
             return outputList;
-        }
-
-
-        public CbrExtractOutput ExtractV1(IOneCbrFile oneFile)
-        {
-            string extractedFolder = System.IO.Path.GetDirectoryName(oneFile.FileName);
-
-            CbrExtractOutput output = new CbrExtractOutput();
-            output.HasFolder = _extractionRules.ForceSubFolder;
-
-            var archive = ArchiveFactory.Open(oneFile.FileName);
-
-            foreach (var item in archive.Entries)
-            {
-                string fullFile = System.IO.Path.Combine(extractedFolder, item.Key);
-                item.WriteToFile(fullFile);
-                output.Files.Add(fullFile);
-            }
-
-            return output;
         }
 
 
