@@ -14,7 +14,7 @@ namespace CbrOperations
 
     public class CbrInput : ICbrInput
     {
-        public CbrInput(ICbrPaths cbrPaths)
+        public CbrInput(CbrPaths cbrPaths)
         {
             SourcePath = cbrPaths.SourcePath;
             DestinationPath = cbrPaths.DestinationPath;

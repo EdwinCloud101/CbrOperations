@@ -5,17 +5,17 @@ using System.Text;
 namespace CbrOperations
 {
 
-    public interface ICbrExtractOutput
-    {
-        string ExtractedPath { get; set; }
-        bool HasFolder { get; set; }
+    //public interface ICbrExtractOutput
+    //{
+    //    string ExtractedPath { get; set; }
+    //    bool HasFolder { get; set; }
 
-        string FolderName { get; set; }
+    //    string FolderName { get; set; }
 
-        List<string> Files { get; set; }
-    }
+    //    List<string> Files { get; set; }
+    //}
 
-    public class CbrExtractOutput : ICbrExtractOutput
+    public class CbrExtractOutput //: ICbrExtractOutput
     {
         public CbrExtractOutput()
         {
