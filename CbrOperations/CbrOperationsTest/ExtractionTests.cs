@@ -29,16 +29,11 @@ namespace CbrOperationsUnitTests
 
 
 
-
-            List<IRarEntry> list = new List<IRarEntry>();
-
-            var rarEntryMock = new Mock<IRarEntry>();
-            rarEntryMock.Setup(lib => lib.WriteToFile(It.IsAny<string>()));
-            rarEntryMock.Setup(lib => lib.Key).Returns("some_file.jpg");
-            list.Add(rarEntryMock.Object);
-
             var archiveMock = new Mock<IArchiveFactoryDecoupling>();
-            archiveMock.Setup(lib => lib.OpenAndGetEntries()).Returns(list);
+            List<string> list = new List<string>();
+            list.Add("some_file.jpg");
+
+            archiveMock.Setup(lib => lib.WriteToFiles(It.IsAny<string>())).Returns(list);
             archiveMock.Setup(lib => lib.FileName).Returns(fileName);
 
             container.Register(Component.For<IArchiveFactoryDecoupling>().Instance(archiveMock.Object));

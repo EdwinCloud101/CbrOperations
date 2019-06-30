@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using SharpCompress.Archives;
 
@@ -8,42 +9,42 @@ namespace CbrOperations.Decoupling.SharpCompress
     public interface IArchiveFactoryDecoupling
     {
         string FileName { get; }
-        IList<IRarEntry> OpenAndGetEntries();
+        IArchive CurrentArchive { get; }
+        List<string> WriteToFiles(string extractedFolder);
     }
 
     public class ArchiveFactoryDecoupling : IArchiveFactoryDecoupling
     {
-        private readonly List<IRarEntry> _rarEntries;
+        public string FileName { get; }
+        public IArchive CurrentArchive { get; private set; }
+        public IList<IRarEntry> Entries { get; private set; }
 
-        public ArchiveFactoryDecoupling(string fileName, List<IRarEntry> rarEntries)
+
+
+        public ArchiveFactoryDecoupling(string fileName)
         {
-            _rarEntries = rarEntries;
             FileName = fileName;
         }
 
 
-        public string FileName { get; }
 
-        public IList<IRarEntry> OpenAndGetEntries()
+        public List<string> WriteToFiles(string extractedFolder)
         {
-            IList<IRarEntry> list = new List<IRarEntry>();
+            var list = new List<string>();
 
-            var archive = ArchiveFactory.Open(FileName);
-            foreach (var archiveEntry in archive.Entries)
+            CurrentArchive = ArchiveFactory.Open(FileName);
+            foreach (var item in CurrentArchive.Entries)
             {
-                IRarEntry item = new RarEntry();
-                item.Key = item.Key;
-                list.Add(item);
+                string fullFile = System.IO.Path.Combine(extractedFolder, item.Key);
+                item.WriteToFile(fullFile);
+                list.Add(item.Key);
             }
 
             return list;
         }
 
-        //public IEnumerable<IArchiveEntry> OpenAndGetEntries()
-        //{
-        //    var archive = ArchiveFactory.Open(FileName);
-        //    return archive.Entries;
-        //}
+
+
     }
 
 }

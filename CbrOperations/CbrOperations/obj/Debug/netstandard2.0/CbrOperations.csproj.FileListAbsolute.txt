@@ -1,0 +1,10 @@
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.csproj.CoreCompileInputs.cache
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.AssemblyInfoInputs.cache
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.AssemblyInfo.cs
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\bin\Debug\netstandard2.0\CbrOperations.deps.json
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\bin\Debug\netstandard2.0\CbrOperations.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\bin\Debug\netstandard2.0\CbrOperations.pdb
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\bin\Debug\netstandard2.0\DotNetDecoupling.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.csproj.CopyComplete
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.dll
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.pdb

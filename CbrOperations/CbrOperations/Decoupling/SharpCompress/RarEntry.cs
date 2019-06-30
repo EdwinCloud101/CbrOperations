@@ -12,9 +12,16 @@ namespace CbrOperations.Decoupling.SharpCompress
 
     public class RarEntry : IRarEntry
     {
+        private readonly IArchiveFactoryDecoupling _archiveFactoryDecoupling;
+
+        public RarEntry(IArchiveFactoryDecoupling archiveFactoryDecoupling)
+        {
+            _archiveFactoryDecoupling = archiveFactoryDecoupling;
+        }
+
         public void WriteToFile(string destinationFileName)
         {
-            throw new NotImplementedException();
+            
         }
 
         public string Key { get; set; }

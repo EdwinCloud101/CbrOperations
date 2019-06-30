@@ -11,7 +11,6 @@ namespace CbrOperations
     public interface ICbrExtract
     {
         IOneCbrFile OneFile { get; }
-
         ICbrExtractOutput Extract(ICbrInput input);
         ICbrExtractOutput Extract(IOneCbrFile oneFile);
         IArchiveFactoryDecoupling FactoryDecoupling { get; }
@@ -21,6 +20,9 @@ namespace CbrOperations
     {
         private readonly IExtractionRules _extractionRules;
         public IArchiveFactoryDecoupling FactoryDecoupling { get; }
+        public IOneCbrFile OneFile { get; }
+
+
 
         public CbrExtract(IExtractionRules extractionRules, IArchiveFactoryDecoupling archiveFactoryDecoupling)
         {
@@ -28,24 +30,18 @@ namespace CbrOperations
             FactoryDecoupling = archiveFactoryDecoupling;
         }
 
-        public IOneCbrFile OneFile { get; }
+
 
         public ICbrExtractOutput Extract(IOneCbrFile oneFile)
         {
-            string extractedFolder = System.IO.Path.GetDirectoryName(oneFile.FileName);
-
             ICbrExtractOutput output = new CbrExtractOutput();
             output.HasFolder = _extractionRules.ForceSubFolder;
-
-            foreach (IRarEntry item in FactoryDecoupling.OpenAndGetEntries())
-            {
-                string fullFile = System.IO.Path.Combine(extractedFolder, item.Key);
-                item.WriteToFile(fullFile);
-                output.Files.Add(fullFile);
-            }
+            output.Files = FactoryDecoupling.WriteToFiles(System.IO.Path.GetDirectoryName(oneFile.FileName));
 
             return output;
         }
+
+
 
         public ICbrExtractOutput ExtractV1(IOneCbrFile oneFile)
         {
@@ -66,38 +62,10 @@ namespace CbrOperations
             return output;
         }
 
+
         public ICbrExtractOutput Extract(ICbrInput input)
         {
-            //bool hasFolder = input.HasFolder;
-            //string extractedFolder = System.IO.Path.GetDirectoryName(input.Path);
-            //string sourceFileNameNoExtension = System.IO.Path.GetFileNameWithoutExtension(input.Path);
-
-            //if (hasFolder)
-            //{
-            //    extractedFolder = System.IO.Path.Combine(extractedFolder, sourceFileNameNoExtension + (input.UniqueFolderName? " - " + Guid.NewGuid() : ""));
-            //    System.IO.Directory.CreateDirectory(extractedFolder);
-            //}
-
-
-            //ICbrExtractOutput output = new CbrExtractOutput();
-            //output.HasFolder = hasFolder;
-
-
-            //var archive = ArchiveFactory.Open(input.Path);
-
-
-            //foreach (var item in archive.Entries)
-            //{
-            //    string fullFile = System.IO.Path.Combine(extractedFolder, item.Key);
-            //    item.WriteToFile(fullFile);
-            //    output.Files.Add(fullFile);
-            //}
-
-            //return output;
-
-            return null;
+            throw new NotImplementedException();
         }
-
-
     }
 }
