@@ -8,3 +8,4 @@ D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\bin\Debug\netstandard2.
 D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.csproj.CopyComplete
 D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.dll
 D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.pdb
+D:\GithubLocal\CbrOperations\CbrOperations\CbrOperations\obj\Debug\netstandard2.0\CbrOperations.csprojAssemblyReference.cache

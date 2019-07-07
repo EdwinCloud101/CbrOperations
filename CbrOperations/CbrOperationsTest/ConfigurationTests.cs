@@ -31,7 +31,7 @@ namespace CbrOperationsUnitTests
 
             container.Register(Component.For<IDirectory>().Instance(directoryMock.Object));
 
-            container.Register(Component.For<IExtractionRules>().ImplementedBy<ExtractionRules>());
+            container.Register(Component.For<ExtractionRules>().ImplementedBy<ExtractionRules>());
             container.Register(Component.For<ICbrExtract>().ImplementedBy<CbrExtract>());
 
             var archiveMock = new Mock<IArchiveFactoryDecoupling>();
@@ -42,7 +42,7 @@ namespace CbrOperationsUnitTests
 
             container.Register(Component.For<IArchiveFactoryDecoupling>().Instance(archiveMock.Object));
 
-            var extractionRules = container.Resolve<IExtractionRules>();
+            var extractionRules = container.Resolve<ExtractionRules>();
             var extract = container.Resolve<ICbrExtract>();
 
             Assert.IsTrue(extractionRules != null);

@@ -18,19 +18,19 @@ namespace CbrOperations
 
     public class CbrExtract : ICbrExtract
     {
-        private readonly IExtractionRules _extractionRules;
+        private readonly ExtractionRules _extractionRules;
         private readonly IDirectory _directory;
-
+        private readonly IPath _path;
 
 
         public IArchiveFactoryDecoupling FactoryDecoupling { get; }
 
 
-
-        public CbrExtract(IExtractionRules extractionRules, IArchiveFactoryDecoupling archiveFactoryDecoupling, IDirectory directory)
+        public CbrExtract(ExtractionRules extractionRules, IArchiveFactoryDecoupling archiveFactoryDecoupling, IDirectory directory, IPath path)
         {
             _extractionRules = extractionRules;
             _directory = directory;
+            _path = path;
             FactoryDecoupling = archiveFactoryDecoupling;
         }
 
@@ -43,9 +43,22 @@ namespace CbrOperations
             var files = _directory.GetFiles(paths.SourcePath, "*.*", paths.SourceSearchOption).Where(f => f.EndsWith(".cbr") || f.EndsWith(".cbz"));
             foreach (var item in files)
             {
+                string finalDestination = paths.DestinationPath;
+
+                if (_extractionRules.ForceSubFolder)
+                {
+                    finalDestination = _path.Combine(finalDestination, _path.GetFileName(item).Replace(_path.GetExtension(item),""));
+                    _directory.CreateDirectory(finalDestination);
+                }
+
+
                 var output = new CbrExtractOutput();
                 output.HasFolder = _extractionRules.ForceSubFolder;
-                output.Files = FactoryDecoupling.WriteToFiles(paths.DestinationPath, item);
+                output.OriginalCbrFileName = _path.GetFileName(item);
+                //TODO: consider subfolder approach
+                output.FullSourcePath = paths.SourcePath;
+                output.FullDestinationPath = paths.DestinationPath;
+                output.Files = FactoryDecoupling.WriteToFiles(finalDestination, item);
                 outputList.Add(output);
             }
 

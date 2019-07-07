@@ -43,13 +43,13 @@ namespace CbrOperationsUnitTests
 
 
             container.Register(Component.For<IDirectory>().Instance(directoryMock.Object));
-            container.Register(Component.For<IExtractionRules>().ImplementedBy<ExtractionRules>());
+            container.Register(Component.For<ExtractionRules>().ImplementedBy<ExtractionRules>());
             container.Register(Component.For<CbrPaths>().ImplementedBy<CbrPaths>());
             container.Register(Component.For<ICbrExtract>().ImplementedBy<CbrExtract>());
 
 
 
-            var extractionRules = container.Resolve<IExtractionRules>();
+            var extractionRules = container.Resolve<ExtractionRules>();
             var extract = container.Resolve<ICbrExtract>();
             var paths = container.Resolve<CbrPaths>();
             paths.SourcePath = @"pending";

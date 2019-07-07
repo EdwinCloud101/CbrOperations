@@ -10,6 +10,7 @@ namespace CbrOperationsUnitTests
     [TestClass]
     public class InputTests
     {
+
         public void OneCbrPath1Test()
         {
             var container = new WindsorContainer();

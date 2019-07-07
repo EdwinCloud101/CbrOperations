@@ -4,15 +4,9 @@ using System.Text;
 
 namespace CbrOperations.Configuration
 {
-    public interface IExtractionRules
+    public class ExtractionRules
     {
-        bool ForceSubFolder { get; }
-        bool RenameEachPagetoIndex { get; }
-    }
-
-    public class ExtractionRules : IExtractionRules
-    {
-        public bool ForceSubFolder { get; }
-        public bool RenameEachPagetoIndex { get; }
+        public bool ForceSubFolder { get; set; }
+        public bool RenameEachPagetoIndex { get; set; }
     }
 }
